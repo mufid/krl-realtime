@@ -7,6 +7,7 @@ class CreateStasiuns < ActiveRecord::Migration
       t.timestamps
     end
     create_table :status_berhenti do |t|
+      t.references :stasiuns
       t.datetime :waktu
     end
   end
