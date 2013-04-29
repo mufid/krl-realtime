@@ -13,6 +13,7 @@ test:
   username: user
   database: krlrealtime-test
 
+# Heroku auto generate. Ignore this
 production:
   adapter: sqlite3
   database: db/production.sqlite3

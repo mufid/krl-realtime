@@ -15,4 +15,4 @@
 /tmp
 
 # IDE Related
-,project
+.project

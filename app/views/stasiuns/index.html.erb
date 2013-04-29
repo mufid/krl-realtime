@@ -1,0 +1,23 @@
+<h1>Listing stasiuns</h1>
+
+<table>
+  <tr>
+    <th>Kode</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stasiuns.each do |stasiun| %>
+  <tr>
+    <td><%= stasiun.kode %></td>
+    <td><%= link_to 'Show', stasiun %></td>
+    <td><%= link_to 'Edit', edit_stasiun_path(stasiun) %></td>
+    <td><%= link_to 'Destroy', stasiun, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Stasiun', new_stasiun_path %>

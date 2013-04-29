@@ -23,3 +23,12 @@ This consist of two things:
   no other people work on your task)
 - Don't forget to rebase before push
 - Conflict pull request will be rejected
+
+== Contributor Guide
+
+1. fork, clone
+2. cd to the clone, `bundle install`
+3. Run postgre, make sure the settings is the same with `config/database.yml`
+4. `bundle exec rails s`
+
+Current data of retrieved KRL data is being processed.

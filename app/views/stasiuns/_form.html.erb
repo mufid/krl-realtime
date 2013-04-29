@@ -1,0 +1,21 @@
+<%= form_for(@stasiun) do |f| %>
+  <% if @stasiun.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stasiun.errors.count, "error") %> prohibited this stasiun from being saved:</h2>
+
+      <ul>
+      <% @stasiun.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :kode %><br />
+    <%= f.text_field :kode %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
