@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20130429224854) do
   create_table "status_berhenti", :force => true do |t|
     t.integer  "stasiuns_id"
     t.datetime "waktu"
+    t.integer  "no_ka"
   end
 
 end

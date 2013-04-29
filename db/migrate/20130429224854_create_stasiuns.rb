@@ -9,6 +9,7 @@ class CreateStasiuns < ActiveRecord::Migration
     create_table :status_berhenti do |t|
       t.references :stasiuns
       t.datetime :waktu
+      t.integer :no_ka
     end
   end
 end
