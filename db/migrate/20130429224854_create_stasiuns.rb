@@ -8,6 +8,7 @@ class CreateStasiuns < ActiveRecord::Migration
     end
     create_table :status_berhenti do |t|
       t.references :stasiuns
+      t.integer :stasiun_tujuan
       t.datetime :waktu
       t.integer :no_ka
     end
