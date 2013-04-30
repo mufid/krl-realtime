@@ -11,6 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20130429224854) do
+
+  create_table "stasiuns", :force => true do |t|
+    t.string   "kode"
+    t.decimal  "lat",        :precision => 15, :scale => 10
+    t.decimal  "lng",        :precision => 15, :scale => 10
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  create_table "status_berhenti", :force => true do |t|
+    t.integer  "stasiuns_id"
+    t.integer  "stasiun_tujuan"
+    t.datetime "waktu"
+    t.integer  "no_ka"
+  end
 
 end

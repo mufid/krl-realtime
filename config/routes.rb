@@ -1,7 +1,7 @@
 KrlRealtime::Application.routes.draw do
   resources :stasiuns
 
-
+  match '/' => "welcome#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
