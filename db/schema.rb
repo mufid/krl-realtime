@@ -15,11 +15,17 @@ ActiveRecord::Schema.define(:version => 20130429224854) do
 
   create_table "stasiuns", :force => true do |t|
     t.string   "kode"
+    t.string   "nama"
     t.decimal  "lat",        :precision => 15, :scale => 10
     t.decimal  "lng",        :precision => 15, :scale => 10
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
   end
+
+  add_index "stasiuns", ["kode"], :name => "index_stasiuns_on_kode"
+  add_index "stasiuns", ["lat"], :name => "index_stasiuns_on_lat"
+  add_index "stasiuns", ["lng"], :name => "index_stasiuns_on_lng"
+  add_index "stasiuns", ["nama"], :name => "index_stasiuns_on_nama"
 
   create_table "status_berhenti", :force => true do |t|
     t.integer  "stasiuns_id"
@@ -27,5 +33,8 @@ ActiveRecord::Schema.define(:version => 20130429224854) do
     t.datetime "waktu"
     t.integer  "no_ka"
   end
+
+  add_index "status_berhenti", ["stasiuns_id"], :name => "index_status_berhenti_on_stasiuns_id"
+  add_index "status_berhenti", ["waktu"], :name => "index_status_berhenti_on_waktu"
 
 end

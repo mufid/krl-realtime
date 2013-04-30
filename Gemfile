@@ -31,6 +31,7 @@ gem 'jquery-rails'
 gem 'nokogiri' 
 # Job
 gem 'whenever', :require => false
+gem 'rufus-scheduler', :require => "rufus/scheduler"
 # Downloader
 gem 'httparty'
 
