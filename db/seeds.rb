@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+jakartakota = Stasiun.find_or_create_by_nama("JAKARTAKOTA")
+jakartakota.kode = "JAK"
+jakartakota.save
+
+bogor = Stasiun.find_or_create_by_nama("BOGOR")
+bogor.kode = "BOO"
+bogor.save

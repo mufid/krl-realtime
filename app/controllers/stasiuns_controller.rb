@@ -1,4 +1,5 @@
-class StasiunsController < ApplicationController
+class StasiunsController # < ApplicationController
+                         # OBSOLOTE
   # GET /stasiuns
   # GET /stasiuns.json
   def index

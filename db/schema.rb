@@ -28,13 +28,13 @@ ActiveRecord::Schema.define(:version => 20130429224854) do
   add_index "stasiuns", ["nama"], :name => "index_stasiuns_on_nama"
 
   create_table "status_berhenti", :force => true do |t|
-    t.integer  "stasiuns_id"
+    t.integer  "stasiun_id"
     t.integer  "stasiun_tujuan"
     t.datetime "waktu"
     t.integer  "no_ka"
   end
 
-  add_index "status_berhenti", ["stasiuns_id"], :name => "index_status_berhenti_on_stasiuns_id"
+  add_index "status_berhenti", ["stasiun_id"], :name => "index_status_berhenti_on_stasiun_id"
   add_index "status_berhenti", ["waktu"], :name => "index_status_berhenti_on_waktu"
 
 end

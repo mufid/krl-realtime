@@ -1,3 +1,23 @@
 <h1>Hi!</h1>
 
-<%= debug @sesuatu %>
+<table>
+  <tr>
+    <th>No. KA</th>
+    <th>Stasiun</th>
+    <th>Terakhir ada</th>
+  </tr>
+
+<% @status_berhenti.each do |row| %>
+  <tr>
+    <td><%= row.no_ka %></td>
+    <td><%= row.stasiun.nama %></td>
+    <td><%= row.waktu %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<p>Ada total <strong><%= @status_berhenti_count %></strong> entri terproses.</p>
+
+

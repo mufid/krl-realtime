@@ -15,14 +15,14 @@ class CreateStasiuns < ActiveRecord::Migration
     add_index :stasiuns, :lng
 
     create_table :status_berhenti do |t|
-      t.references :stasiuns
+      t.references :stasiun
       t.integer :stasiun_tujuan
       t.datetime :waktu
       t.integer :no_ka
       
     end
 
-    add_index :status_berhenti, :stasiuns_id
+    add_index :status_berhenti, :stasiun_id
     add_index :status_berhenti, :waktu
 
   end

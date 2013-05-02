@@ -1,21 +1,8 @@
 class WelcomeController < ApplicationController
   # GET /
   def index
-    # Get secret first
-    init_uri = 'http://infoka.krl.co.id/to/jak'
-    initial = HTTParty.get(init_uri)
-    secret_cookie = initial.headers['set-cookie'].split(";").first
-    # I dont have any idea with this
-    secret_uri = 'http://infoka.krl.co.id/XwNURRRXXFcABg0ZEWNWBQNBVRNTW0JXXgwKCRMBREpBA14FBwFJS0ZQTBNcSwpEWVxBCRt4dyhKVwFXVAcOCAQBCDoxZWJlODFiZA=='
-    
-    result = HTTParty.post(secret_uri, :headers => {
-      "User-Agent" => "krlrealtimecrawler",
-      "Referer" => init_uri,
-      "Cookie" => secret_cookie
-    });
-    
-    @sesuatu = JSON.parse(result) 
-    
+    @status_berhenti = Status_berhenti.limit(20).order("waktu DESC")
+    @status_berhenti_count = Status_berhenti.count
     respond_to do |format|
       format.html # index.html.erb
     end
