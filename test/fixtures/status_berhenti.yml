@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+# Test as if there are 2 trains in Bogor
+keretabogor1:
+  waktu: <%= Time.now.to_s(:db) %>
+  no_ka: 2
+  stasiun_tujuan: <%= ActiveRecord::Fixtures.identify(:jakarta) %>
+  stasiun_id: <%= ActiveRecord::Fixtures.identify(:bogor) %>
+
+keretabogor2:
+  waktu: <%= 1.hours.ago.to_s(:db) %>
+  no_ka: 3
+  stasiun_tujuan: <%= ActiveRecord::Fixtures.identify(:jakarta) %>
+  stasiun_id: <%= ActiveRecord::Fixtures.identify(:bogor) %>

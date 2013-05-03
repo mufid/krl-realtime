@@ -1,7 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  kode: MyString
+# Jakarta dan 2 stasiun selanjutnya ke arah bogor
+jakarta:
+  kode: JAK
+  nama: Jakartakota
 
-two:
-  kode: MyString
+jayakarta:
+  kode: JYK
+  nama: Jayakarta
+
+manggabesar:
+  kode: MGB
+  nama: Manggabesar
+
+# Bogor dan 2 stasiun selanjutnya ke arah jakarta
+bogor:
+  kode: BOO
+  nama: Bogor
+
+cilebut:
+  kode: CLT
+  nama: Cilebut
+
+bojonggede:
+  kode: BJD
+  nama: Bojonggede
