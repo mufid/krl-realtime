@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   host: localhost
-  username: user
+  username: postgres
   database: krlrealtime-dev
 
 # Warning: The database defined as "test" will be erased and
@@ -10,7 +10,7 @@ development:
 test:
   adapter: postgresql
   host: localhost
-  username: user
+  username: postgres # For travis
   database: krlrealtime-test
 
 # Heroku auto generate. Ignore this
