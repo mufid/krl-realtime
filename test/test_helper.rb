@@ -8,6 +8,6 @@ class ActiveSupport::TestCase
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
   fixtures :all
-
+  set_fixture_class :status_berhenti => "Status_berhenti"
   # Add more helper methods to be used by all tests here...
 end

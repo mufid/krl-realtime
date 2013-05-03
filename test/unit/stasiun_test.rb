@@ -1,6 +1,7 @@
 require 'test_helper'
 
 # No special test for stasiun data
+# Just check several stasiun exist
 class StasiunTest < ActiveSupport::TestCase
   test "should show all stasiun" do
     gakada = true

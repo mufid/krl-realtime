@@ -4,10 +4,27 @@ class Status_berhenti < ActiveRecord::Base
   before_save :no_duplicate
   
   attr_accessible :stasiun_tujuan, :waktu, :no_ka, :id, :ber, :nama_stasiun
-  
+  attr_writer :nama_stasiun
   belongs_to :stasiun
   #has_one :stasiun, :through => :stasiuns_id
   
+  def ber
+    return @ber
+  end
+  
+  def ber= (what)
+    @ber = what
+  end
+  
+  def nama_stasiun
+    return @nama_stasiun
+  end
+  
+  def nama_stasiun= (what)
+    @nama_stasiun = what
+  end
+  
+    
   def no_duplicate
     return true unless self.new_record?
     puts "A new record."
@@ -17,7 +34,7 @@ class Status_berhenti < ActiveRecord::Base
     puts "For #{@nama_stasiun}, id is #{stasiun_id}"
     
     # BER phase
-    if self.ber
+    if @ber
       terakhir = Status_berhenti.find_by_no_ka(@no_ka, :conditions => 
       ["waktu > ?", 
         1.minutes.ago], :order => "waktu DESC")
@@ -33,7 +50,7 @@ class Status_berhenti < ActiveRecord::Base
     return true if terakhir == nil
     return true if terakhir.count < 2
     Status_berhenti.delete(terakhir.first.id)
-    puts "Deletion"
+    puts "Something has been discarded"
     true
   end
 end
