@@ -101,7 +101,8 @@ class StatusBerhentiTest < ActiveSupport::TestCase
            cbt_id, :conditions => [
            "no_ka = ?", no_ka ], :order => "waktu DESC").count == 1,
            "Should only show 1 in cilebut after BER add request"
-    assert Status_berhenti.find_by_id(z.id).waktu == waktu,
-           "Should not change the entry"
+    waktu_db = Status_berhenti.find_by_id(z.id).waktu
+    assert waktu_db == waktu,
+           "Should not change the entry. Read from db got #{waktu_db}. Previously got #{waktu}"
   end
 end
