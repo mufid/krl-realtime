@@ -76,7 +76,7 @@ class StatusBerhentiTest < ActiveSupport::TestCase
     z = Status_berhenti.new
     z.no_ka = no_ka
     waktu = 20.seconds.ago
-    z.waktu = 20.seconds.ago
+    z.waktu = waktu
     z.ber   = true
     z.nama_stasiun = cbt
     z.stasiun_tujuan = jkt_id
