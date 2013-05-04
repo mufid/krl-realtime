@@ -4,4 +4,4 @@ rvm:
 before_script:
   - psql -c 'create database "krlrealtime-test";' -U postgres
   - bundle exec rake db:migrate
-  - bundle exec rake db:prepare
+  - bundle exec rake db:test:prepare
