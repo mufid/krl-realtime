@@ -1,5 +1,7 @@
 == Welcome to krl-realtime
 
+{<img src="https://travis-ci.org/mufid/krl-realtime.png" />}[https://travis-ci.org/mufid/krl_realtime]
+
 KRL Realtime is an app for viewing KRL position in real time.
 This consist of two things:
 
