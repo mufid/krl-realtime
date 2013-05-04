@@ -1,10 +1,12 @@
 scheduler = Rufus::Scheduler.start_new
 
+puts "Warning: Running on test environment" if Rails.env.test?
+
 # Jobs for retrieving data, put it into db
 scheduler.every '3s', :allow_overlapping => false do
-  next
-  
-  # puts 'Scheduler running'
+  # Should be done in test
+  next if Rails.env.test?
+
   # Get secret first
   init_uri = 'http://infoka.krl.co.id/to/jak'
   initial = HTTParty.get(init_uri)
@@ -46,10 +48,14 @@ scheduler.every '3s', :allow_overlapping => false do
     s.ber   = (status_kereta.downcase == 'ber')
     s.nama_stasiun = posisi
     s.stasiun_tujuan = kodejak
-    puts "Try to save"
-    puts s
     s.save
     #puts "#{noKereta} ada di #{posisi} berangkat dari #{dari}"
   end
   
+end
+
+scheduler.every '1d' do
+  # Don't worry, it will be done in test
+  next if Rails.env.test?
+  Status_berhenti.delete_old
 end

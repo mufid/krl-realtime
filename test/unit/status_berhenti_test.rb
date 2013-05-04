@@ -55,7 +55,8 @@ class StatusBerhentiTest < ActiveSupport::TestCase
            
     s = Status_berhenti.new
     s.no_ka = no_ka
-    s.waktu = 1.seconds.ago
+    waktu   = 1.seconds.ago
+    s.waktu = waktu
     s.ber   = false
     s.nama_stasiun = stasiun_bogor
     s.stasiun_tujuan = stasiun_jakarta_id
@@ -63,6 +64,8 @@ class StatusBerhentiTest < ActiveSupport::TestCase
     
     assert Status_berhenti.where(:stasiun_id => stasiun_bogor_id, :no_ka => no_ka).count == 2,
            "Should only show 2 status berhenti, even after next insert"
+    assert waktu.to_s(:db) == Status_berhenti.find_by_id(s.id).waktu.to_s(:db),
+           "Should update status data."
 
   end
   test "should auto update when DI missed" do
@@ -95,14 +98,31 @@ class StatusBerhentiTest < ActiveSupport::TestCase
     s.stasiun_tujuan = jkt_id
     s.save
 
-    # WARN: Test is not yet contain "not changed", only
     # test "only show 1 in cilebut"
     assert Status_berhenti.find_all_by_stasiun_id(
            cbt_id, :conditions => [
            "no_ka = ?", no_ka ], :order => "waktu DESC").count == 1,
            "Should only show 1 in cilebut after BER add request"
     waktu_db = Status_berhenti.find_by_id(z.id).waktu
+    # Somehow, not using .to_s(:db) doesn't work on travis
     assert waktu_db.to_s(:db) == waktu.to_s(:db),
            "Should not change the entry. Read from db got #{waktu_db}. Previously got #{waktu}"
+  end
+  
+  test "should delete old object" do
+    stasiun_bogor = stasiuns(:bogor).nama
+    stasiun_jakarta_id = stasiuns(:jakarta).id  
+
+    s = Status_berhenti.new
+    s.no_ka = 321
+    s.waktu = 5.days.ago
+    s.nama_stasiun = stasiun_bogor
+    s.ber   = false
+    s.stasiun_tujuan = stasiun_jakarta_id
+    s.save
+    
+    Status_berhenti.delete_old
+    
+    assert Status_berhenti.find_by_id(s.id).nil?
   end
 end

@@ -7,9 +7,6 @@ class Status_berhenti < ActiveRecord::Base
   attr_accessor :ber, :nama_stasiun
   belongs_to :stasiun
   #has_one :stasiun, :through => :stasiuns_id
-  
-
-  
     
   def no_duplicate
     # Only run if new_record
@@ -36,6 +33,11 @@ class Status_berhenti < ActiveRecord::Base
     return true if terakhir == nil
     return true if terakhir.length < 2
     Status_berhenti.delete(terakhir.first.id)
+    true
+  end
+  
+  def self.delete_old
+    Status_berhenti.delete_all(["waktu < ?", 4.days.ago])
     true
   end
 end
